@@ -399,7 +399,7 @@ const vueLifecycles = singleSpaVue({
 </div>
 ```
 
-# 子项目传参
+# 父->子项目传参
 - 父级项目在注册子项目时有四个参数
 - single-config.js
 ```js
