@@ -26,7 +26,11 @@ const vueLifeCycles = singleSpaVue({
 })
 
 export const bootstrap = vueLifeCycles.bootstrap
-export const mount = vueLifeCycles.mount
+// export const mount = vueLifeCycles.mount
+export function mount (props) {
+  console.log("啥几码？", props); // 可以在 app1 中获取到authToken参数
+  return vueLifeCycles.mount(props);
+}
 export const unmount = vueLifeCycles.unmount
 
 
