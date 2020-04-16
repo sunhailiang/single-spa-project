@@ -32,5 +32,6 @@ singleSpa.registerApplication("vueChildA", async () => {
     vueChildA = window.vueChildA
   })
   return vueChildA // 这个就是子项目
-}, location => location.pathname.startsWith('/vuechildA'))
+}, location => location.pathname.startsWith('/vuechildA'), { authToken: "d83jD63UdZ6RS6f70D0" })
+
 singleSpa.start()

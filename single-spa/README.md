@@ -399,3 +399,27 @@ const vueLifecycles = singleSpaVue({
 </div>
 ```
 
+# 子项目传参
+- 父级项目在注册子项目时有四个参数
+- single-config.js
+```js
+singleSpa.registerApplication("vueChildA", async () => {
+  console.log("加载成功");
+  let vueChildA = null
+  await getManifest("/stats.json", 'app').then(() => {
+    vueChildA = window.vueChildA
+  })
+  return vueChildA // 这个就是子项目
+}, location => location.pathname.startsWith('/vuechildA'), { authToken: "d83jD63UdZ6RS6f70D0" }) // 注意了，最后这个对象就是传递参数
+// 最后这个{ authToken: "d83jD63UdZ6RS6f70D0" } 对象就可以讲
+singleSpa.start()
+```
+- 子项目中修改
+```js
+// export const mount = vueLifeCycles.mount
+ export function mount (props) {
+  console.log("啥几码？", props); // 可以在 app1 中获取到authToken参数
+  return vueLifeCycles.mount(props);
+}
+```
+
